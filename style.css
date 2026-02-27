@@ -177,6 +177,28 @@ p {
     background: rgba(207, 161, 106, 0.05);
 }
 
+.cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.project-card.youtube {
+    border-left: 3px solid #ff0000; /* YouTube kırmızısı ile küçük bir vurgu */
+}
+
 /* Animations */
 .reveal {
     opacity: 0;
