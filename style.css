@@ -1,8 +1,9 @@
 :root {
-    --bg-color: #050505;
-    --text-color: #ffffff;
-    --accent-color: #ff5a2d; /* Lombak Turuncusu */
+    --bg-color: #0a0a0a;
+    --text-color: #e0e0e0;
+    --accent-color: #cfa16a; /* Yumuşak Altın/Kum Tonu - Arkeoloji esintisi */
     --font-main: 'Space Grotesk', sans-serif;
+    --section-padding: 8rem 2rem;
 }
 
 * {
@@ -11,11 +12,15 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-main);
-    line-height: 1.6;
+    line-height: 1.8;
     overflow-x: hidden;
 }
 
@@ -27,20 +32,26 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+    position: relative;
+    background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.7)), 
+                url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
 }
 
 h1 {
-    font-size: 8vw;
+    font-size: 7vw;
     font-weight: 700;
-    letter-spacing: -2px;
-    margin-bottom: 1rem;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
 }
 
 .subtitle {
-    font-size: 1.5rem;
-    opacity: 0.7;
+    font-size: 1.2rem;
+    opacity: 0.6;
     font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 /* Nav */
@@ -48,29 +59,37 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 2rem;
+    padding: 2.5rem;
     display: flex;
     justify-content: space-between;
     z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
 }
 
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
-    margin-left: 2rem;
-    font-size: 0.9rem;
+    margin-left: 2.5rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.3s;
+    letter-spacing: 2px;
+    transition: color 0.4s ease;
 }
 
 .nav-links a:hover {
     color: var(--accent-color);
 }
 
-/* Glitch Effect */
+/* Glitch Effect - Refined */
 .glitch {
     position: relative;
+    color: white;
 }
 
 .glitch::before, .glitch::after {
@@ -80,20 +99,20 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--bg-color);
+    background: transparent;
 }
 
 .glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 #ff00c1;
+    left: 1px;
+    text-shadow: -1px 0 var(--accent-color);
     clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
+    animation: glitch-anim 4s infinite linear alternate-reverse;
 }
 
 .glitch::after {
-    left: -2px;
-    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-    animation: glitch-anim2 1s infinite linear alternate-reverse;
+    left: -1px;
+    text-shadow: -1px 0 #ffffff, 1px 1px var(--accent-color);
+    animation: glitch-anim2 1.5s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim {
@@ -108,40 +127,72 @@ nav {
 
 /* Sections */
 .section {
-    padding: 10rem 2rem;
+    padding: var(--section-padding);
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 h2 {
-    font-size: 3rem;
-    margin-bottom: 3rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    color: var(--accent-color);
+}
+
+p {
+    font-size: 1.15rem;
+    font-weight: 300;
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
 }
 
 .project-card {
-    padding: 2rem;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.3s, border-color 0.3s;
+    padding: 3rem 2rem;
+    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.02);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    opacity: 0.6;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     border-color: var(--accent-color);
+    background: rgba(207, 161, 106, 0.05);
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 footer {
     padding: 5rem 2rem;
     text-align: center;
-    font-size: 0.8rem;
-    opacity: 0.5;
+    font-size: 0.75rem;
+    opacity: 0.4;
+    letter-spacing: 1px;
 }

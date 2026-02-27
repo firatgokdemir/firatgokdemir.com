@@ -1,28 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Smooth Scroll
+    // Smooth Scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
-    // Simple reveal animation on scroll
-    const observer = new IntersectionObserver((entries) => {
+    // Intersection Observer for reveal animations
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('active');
             }
         });
-    }, { threshold: 0.1 });
+    }, revealOptions);
 
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'all 0.6s ease-out';
-        observer.observe(card);
+    // Elements to reveal
+    const revealElements = [
+        document.querySelector('#about'),
+        document.querySelector('#projects'),
+        ...document.querySelectorAll('.project-card')
+    ];
+
+    revealElements.forEach(el => {
+        if (el) {
+            el.classList.add('reveal');
+            revealObserver.observe(el);
+        }
+    });
+
+    // Subtle parallax for hero background
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.backgroundPositionY = (scrolled * 0.5) + 'px';
+        }
     });
 });
