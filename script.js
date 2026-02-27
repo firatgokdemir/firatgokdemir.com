@@ -38,12 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isPlaying) {
                 player.playVideo();
                 musicBtn.classList.add('playing');
-                musicBtn.querySelector('.icon').textContent = '❙❙'; // Duraklat ikonu
+                const icon = musicBtn.querySelector('.icon');
+                icon.textContent = '❙❙';
+                icon.setAttribute('data-text', '❙❙'); // Update glitch text
                 isPlaying = true;
             } else {
                 player.pauseVideo();
                 musicBtn.classList.remove('playing');
-                musicBtn.querySelector('.icon').textContent = '♪'; // Nota ikonu
+                const icon = musicBtn.querySelector('.icon');
+                icon.textContent = '♪';
+                icon.setAttribute('data-text', '♪'); // Update glitch text
                 isPlaying = false;
             }
         });
