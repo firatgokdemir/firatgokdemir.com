@@ -1,4 +1,54 @@
+let player;
+let isPlaying = false;
+
+// YouTube API Callback
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-player', {
+        height: '0',
+        width: '0',
+        videoId: 'pp1mVv8lgGk',
+        playerVars: {
+            'autoplay': 0,
+            'loop': 1,
+            'playlist': 'pp1mVv8lgGk'
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    event.target.setVolume(20); // Kısık ses (0-100 arası)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Load YouTube API
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Music Toggle Logic
+    const musicBtn = document.getElementById('music-toggle');
+    if (musicBtn) {
+        musicBtn.addEventListener('click', () => {
+            if (!player) return;
+
+            if (!isPlaying) {
+                player.playVideo();
+                musicBtn.classList.add('playing');
+                musicBtn.querySelector('.icon').textContent = '❙❙'; // Duraklat ikonu
+                isPlaying = true;
+            } else {
+                player.pauseVideo();
+                musicBtn.classList.remove('playing');
+                musicBtn.querySelector('.icon').textContent = '♪'; // Nota ikonu
+                isPlaying = false;
+            }
+        });
+    }
+
     // Smooth Scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

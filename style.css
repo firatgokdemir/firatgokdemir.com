@@ -86,6 +86,42 @@ nav {
     color: var(--accent-color);
 }
 
+.music-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--text-color);
+    cursor: pointer;
+    margin-left: 2rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.music-btn.playing {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(207, 161, 106, 0.3);
+}
+
+#youtube-player {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+}
+
 /* Glitch Effect - Refined */
 .glitch {
     position: relative;
