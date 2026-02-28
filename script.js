@@ -1,49 +1,25 @@
-let player;
+let audioPlayer;
 let isPlaying = false;
 
-// YouTube API Callback
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-player', {
-        height: '0',
-        width: '0',
-        videoId: 'pp1mVv8lgGk',
-        playerVars: {
-            'autoplay': 0,
-            'loop': 1,
-            'playlist': 'pp1mVv8lgGk'
-        },
-        events: {
-            'onReady': onPlayerReady
-        }
-    });
-}
-
-function onPlayerReady(event) {
-    event.target.setVolume(20); // Kısık ses (0-100 arası)
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Load YouTube API
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    // HTML5 Audio Player Setup
+    audioPlayer = new Audio('music.mp3');
+    audioPlayer.loop = true;
+    audioPlayer.volume = 0.3; // %30 ses seviyesi
 
     // Music Toggle Logic
     const musicBtn = document.getElementById('music-toggle');
     if (musicBtn) {
         musicBtn.addEventListener('click', () => {
-            if (!player) return;
-
             if (!isPlaying) {
-                player.playVideo();
+                audioPlayer.play();
                 musicBtn.classList.add('playing');
                 const icon = musicBtn.querySelector('.icon');
                 icon.textContent = '❙❙';
                 icon.setAttribute('data-text', '❙❙'); // Update glitch text
                 isPlaying = true;
             } else {
-                player.pauseVideo();
+                audioPlayer.pause();
                 musicBtn.classList.remove('playing');
                 const icon = musicBtn.querySelector('.icon');
                 icon.textContent = '♪';
