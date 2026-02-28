@@ -59,7 +59,7 @@ body {
     /* 90s Pixel Art Hacker Aesthetic Background */
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
                 url('background.gif');
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     image-rendering: pixelated; /* Pixelliği vurgular */
 }
