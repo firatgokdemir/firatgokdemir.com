@@ -58,7 +58,7 @@ body {
     position: relative;
     /* 90s Pixel Art Hacker Aesthetic Background */
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
-                url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=2000');
+                url('background.gif');
     background-size: cover;
     background-position: center;
     image-rendering: pixelated; /* Pixelliği vurgular */
