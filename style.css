@@ -1344,6 +1344,77 @@ a {
     }
 }
 
+/* Reference-aligned composition: one full-bleed archaeological scene, then a research board. */
+@media (min-width: 861px) {
+    .hero-editorial {
+        position: relative;
+        display: block;
+        min-height: 610px;
+        padding-top: 160px;
+    }
+
+    .hero-editorial .hero-visual {
+        position: absolute;
+        inset: 0 calc((1360px - 100vw) / 2) 0 calc((1360px - 100vw) / 2);
+        z-index: 0;
+        min-height: auto;
+        margin: 0;
+    }
+
+    .hero-editorial .terrain { inset: 0; border: 0; }
+    .hero-editorial .terrain::after {
+        background: linear-gradient(90deg, rgba(23,20,17,.9) 0%, rgba(23,20,17,.64) 36%, rgba(23,20,17,.08) 72%), linear-gradient(0deg, rgba(23,20,17,.82), transparent 48%);
+    }
+    .hero-editorial .terrain img { filter: sepia(.23) saturate(.95) contrast(1.04) brightness(.82); }
+    .hero-editorial .scan-frame { top: 27%; right: 12%; width: 28%; }
+    .hero-editorial .coordinate-top { top: 12%; left: 72%; }
+    .hero-editorial .coordinate-bottom { right: 8%; bottom: 12%; }
+    .hero-editorial .elevation-scale { display: none; }
+    .hero-editorial .contours-one { top: 10%; right: 5%; }
+    .hero-editorial .contours-two { bottom: 2%; left: 2%; }
+    .hero-editorial .hero-copy { position: relative; z-index: 2; width: min(570px, 48%); }
+    .hero-editorial .hero-copy .eyebrow { margin-bottom: 12px; }
+    .hero-editorial .hero-copy h1 { max-width: 570px; font-size: clamp(3.7rem, 5.1vw, 5.75rem); }
+    .hero-editorial .hero-lead { max-width: 470px; margin-top: 20px; color: var(--paper); font-family: var(--font-display); font-size: 1.15rem; line-height: 1.38; }
+    .hero-editorial .hero-actions { display: none; }
+
+    #projects.section { padding-top: 42px; padding-bottom: 84px; }
+    #projects .section-heading { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+    #projects .section-heading .eyebrow { display: none; }
+    #projects .section-heading h2 { font-size: 2.2rem; }
+    #projects .section-heading > p { display: none; }
+    #projects .section-heading::after { flex: 1; height: 1px; background: var(--line); content: ""; }
+    #projects .project-layout { grid-template-columns: 1.55fr .74fr .74fr; gap: 14px; }
+    #projects .project-stack { display: contents; }
+    #projects .project-feature, #projects .project-feature-content { min-height: 260px; }
+    #projects .project-feature-content { padding: 28px; }
+    #projects .project-feature h3 { max-width: 420px; margin: 10px 0; font-size: 2.1rem; }
+    #projects .project-feature p { max-width: 410px; font-family: var(--font-display); font-size: .94rem; line-height: 1.35; }
+    #projects .feature-footer { display: block; margin-top: 14px; }
+    #projects .filter-chips { display: none; }
+    #projects .button-dark { min-height: 34px; padding: 0; border: 0; background: transparent; color: var(--paper); font-size: .78rem; text-decoration: underline; text-underline-offset: 7px; }
+    #projects .button-dark:hover { background: transparent; color: var(--acid); }
+    #projects .project-card { min-height: 260px; }
+    #projects .project-card-copy { right: 18px; bottom: 16px; left: 18px; }
+    #projects .project-card-copy strong { font-family: var(--font-display); font-size: 1.45rem; font-weight: 400; line-height: 1; }
+    #projects .project-card-copy small { display: none; }
+    #projects .play { display: none; }
+
+    .research-route { display: grid; margin-top: 34px; grid-template-columns: 200px 1fr; align-items: start; gap: 30px; }
+    .research-route > p { width: max-content; margin: 0; padding: 8px 18px; transform: rotate(-2deg); background: #e3d3af; color: #31281d; font-family: var(--font-display); font-size: 1.05rem; }
+    .research-route ol { position: relative; display: grid; margin: 0; padding: 0; grid-template-columns: repeat(4, 1fr); list-style: none; }
+    .research-route ol::before { position: absolute; top: 8px; right: 0; left: 0; height: 1px; background: var(--line); content: ""; }
+    .research-route li { position: relative; display: grid; padding: 22px 14px 0; gap: 2px; }
+    .research-route li span { position: absolute; top: 4px; left: 14px; width: 9px; height: 9px; border-radius: 50%; background: var(--acid); box-shadow: 0 0 0 4px var(--ink); }
+    .research-route strong { font-family: var(--font-display); font-size: .95rem; font-weight: 400; }
+    .research-route small { color: var(--paper-muted); font-size: .68rem; }
+}
+
+@media (max-width: 860px) {
+    .research-route { display: none; }
+    .hero-editorial .hero-actions { display: flex; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
